@@ -29,17 +29,17 @@ $api = app('Dingo\Api\Routing\Router');
 
 
 //$api->version(['v1'], ['prefix' => 'api/v1', 'namespace' => ''], function($api) {
-$api->version(['v1'], function($api) {
+$api->version(['v1'], ['namespace' => 'App\Http\Controllers\api'], function($api) {
     $api->get('hello-world', function() {
        return 'Hello World';
     });
 
-    $api->get('simple', 'App\Http\Controllers\api\IndexController@index');
-    $api->post('simple', 'App\Http\Controllers\api\IndexController@store');
-    $api->get('simple/{id}', 'App\Http\Controllers\api\IndexController@show');
-    $api->put('simple/{id}', 'App\Http\Controllers\api\IndexController@update');
-    $api->delete('simple/{id}', 'App\Http\Controllers\api\IndexController@destroy');
+    $api->get('simple', 'IndexController@index');
+    $api->post('simple', 'IndexController@store');
+    $api->get('simple/{id}', 'IndexController@show');
+    $api->put('simple/{id}', 'IndexController@update');
+    $api->delete('simple/{id}', 'IndexController@destroy');
 
-    $api->resource('resource', 'App\Http\Controllers\api\IndexController');
+    $api->resource('resource', 'IndexController');
 });
 
