@@ -18,7 +18,6 @@ use Illuminate\Http\Request;
 //});
 
 
-
 /*
 |--------------------------------------------------------------------------
 | DINGO API Routes
@@ -28,10 +27,9 @@ use Illuminate\Http\Request;
 $api = app('Dingo\Api\Routing\Router');
 
 
-//$api->version(['v1'], ['prefix' => 'api/v1', 'namespace' => ''], function($api) {
-$api->version(['v1'], ['namespace' => 'App\Http\Controllers\api'], function($api) {
-    $api->get('hello-world', function() {
-       return 'Hello World';
+$api->version(['v1'], ['prefix' => 'api/v1', 'namespace' => 'App\Http\Controllers\api'], function ($api) {
+    $api->get('hello-world', function () {
+        return 'Hello World';
     });
 
     $api->get('simple', 'IndexController@index');
