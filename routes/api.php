@@ -28,9 +28,17 @@ use Illuminate\Http\Request;
 $api = app('Dingo\Api\Routing\Router');
 
 
-$api->version('v1', function($api) {
+//$api->version(['v1'], ['prefix' => 'api/v1', 'namespace' => ''], function($api) {
+$api->version(['v1'], function($api) {
     $api->get('hello-world', function() {
        return 'Hello World';
     });
+
+    $api->get('simple', 'App\Http\Controllers\api\IndexController@index');
+    $api->post('simple', 'App\Http\Controllers\api\IndexController@store');
+    $api->put('simple/{id}', 'App\Http\Controllers\api\IndexController@update');
+    $api->delete('simple/{id}', 'App\Http\Controllers\api\IndexController@destroy');
+
+
 });
 
